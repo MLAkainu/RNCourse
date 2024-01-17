@@ -1,5 +1,5 @@
 import  {useState} from 'react';
-import {View, TextInput, Button, StyleSheet} from 'react-native';
+import {View, TextInput, Button, StyleSheet, Modal, Image} from 'react-native';
 
 function GoalInput(props) {
     const [enteredGoalText, setEnteredGoalText] = useState('');
@@ -14,15 +14,27 @@ function GoalInput(props) {
     };
 
     return (
-
-        <View style={styles.inputContainer}>
+        <Modal visible={props.visible} animationType="slide">
+            <View style={styles.inputContainer}>
+            <Image style={styles.image} source={require('../assets/images/goal.png')}/>
             <TextInput 
             placeholder='Enter your goal' 
             onChangeText={(e) => goalInputHandler(e)}
             value={enteredGoalText}
+            style={styles.textInput}
              />
-            <Button onPress={addGoalHandler} title='Add'/>
+            <View style={styles.buttonContainer}>
+                <View style={styles.button}>
+                    <Button title='Cancel' onPress={props.onCancel} color='#f31282'/>
+                </View>
+                <View style={styles.button}>
+                    <Button onPress={addGoalHandler} title='Add' color='#b180f0'/>
+                </View>
+            </View>
+
         </View>
+        </Modal>
+        
     )
 };
 
@@ -31,17 +43,34 @@ export default GoalInput;
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 8,
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
+        padding: 16,
+        backgroundColor: '#311b6b',
+      },
+      image: {
+        width: 100,
+        height: 100,
+        margin: 20
       },
     textInput : {
         borderWidth: 1,
-        borderColor: '#ccc',
-        marginRight: 8,
-        padding: 8,
+        borderColor: '#e4d0ff',
+        backgroundColor: '#e4d0ff',
+        color: '#120438',
+        borderRadius: 6,
+        width: '100%',
+        padding: 16,
+        
       },
+    buttonContainer: {
+        marginTop: 16,
+        flexDirection: 'row',
+        
+      },
+      button: {
+        width: 100,
+        marginHorizontal: 8,
+      }
 });
