@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
         color: Colors.accent500,
         marginVertical: 8,
         fontWeight: 'bold',
+        
         textAlign: 'center',
     },
     buttonsContainer: {
