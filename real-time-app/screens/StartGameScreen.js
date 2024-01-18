@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: { width: 0, height: 2},
         shadowRadius: 6,
+        
         shadowOpacity: 0.25,
         
     },
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         color: Colors.accent500,
         marginVertical: 8,
         fontWeight: 'bold',
-        
+
         textAlign: 'center',
     },
     buttonsContainer: {
